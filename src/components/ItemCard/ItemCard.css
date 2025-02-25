@@ -1,0 +1,9 @@
+.card {
+  width: 323px;
+  position: relative;
+}
+
+.card__title {
+  position: absolute;
+  top: 15px;
+}
