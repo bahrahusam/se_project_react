@@ -21,8 +21,14 @@ function Main({ weatherData }) {
             })}
         </ul>
       </section>
+
+    <footer className="footer">
+    <p className="footer__content">Developed by Husam Bahra</p> 
+    <p className="footer__content">2025</p>
+    </footer>
+
     </main>
-  );
+);
 }
 
 export default Main;
