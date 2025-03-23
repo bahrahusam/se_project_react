@@ -44,6 +44,11 @@ function App() {
     setActiveModal("");
   };
 
+  const handleAddItemModalSubmit = ({name, image, weather}) => {
+    setClothingItems([{name, link: image, weather}, ...clothingItems]);
+    handleCloseClick();
+  };
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -69,6 +74,7 @@ function App() {
         <AddItemModal
           activeModal={activeModal}
           handleCloseClick={handleCloseClick}
+          onAddItemModalSubmit={handleAddItemModalSubmit}
         />
         <ItemModal
           activeModal={activeModal}
