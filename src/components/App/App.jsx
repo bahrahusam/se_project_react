@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
@@ -11,6 +12,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import AddItemModal from "../AddItemModal/AddItemModal";
 
+import Profile from "../Profile/Profile";
 import { defaultClothingItems } from "../../utils/constants";
 
 function App() {
@@ -44,8 +46,8 @@ function App() {
     setActiveModal("");
   };
 
-  const handleAddItemModalSubmit = ({name, image, weather}) => {
-    setClothingItems([{name, link: image, weather}, ...clothingItems]);
+  const handleAddItemModalSubmit = ({ name, image, weather }) => {
+    setClothingItems([{ name, link: image, weather }, ...clothingItems]);
     handleCloseClick();
   };
 
@@ -65,11 +67,23 @@ function App() {
       <div className="page">
         <div className="page__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          <Main
-            weatherData={weatherData}
-            handleCardClick={handleCardClick}
-            clothingItems={clothingItems}
-          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={<Profile />}
+              onCardClick={handleCardClick}
+            />
+          </Routes>
         </div>
         <AddItemModal
           activeModal={activeModal}
