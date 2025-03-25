@@ -1,0 +1,38 @@
+.clothes-section__toolbar{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 35px;
+
+}
+
+.clothes-section__title{
+    font-family: "CabinetGrotesk", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    margin: 0px;
+}
+
+
+.clothes-section__add-button{
+    font-family: "CabinetGrotesk", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    margin: 0px;
+    border: none;
+    color:#00000099;
+
+}
+
+.clothes-section__list{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    gap: 21px;
+    margin-top: 16px;
+    /* model this after the clothes section from main page */
+}
