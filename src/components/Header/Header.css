@@ -23,6 +23,7 @@
   font-size: 20px;
   line-height: 24px;
   border: none;
+  cursor: pointer;
 }
 
 .header__add-clothes-btn:hover {
@@ -44,7 +45,7 @@
   line-height: 25px;
 }
 
-.header__link{
+.header__link {
   text-decoration: none;
   color: #000;
 }

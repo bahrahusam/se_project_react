@@ -1,41 +1,60 @@
-.modal__content_type_image{
-    padding: 0;
-    overflow: hidden;
-    border-radius: 16px;
+.modal__content_type_image {
+  padding: 0px !important;
+  overflow: hidden;
+  border-radius: 16px;
 }
 
-.modal__image{
-    width: 100%;  
-    height: 100%; 
-    object-fit: cover; 
+.modal__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.image__modal__close{
-    top:24px;
-    right:24px;
-    background-image: url(../../assets/closebuttonwhite.svg);
-  
+.image__modal__close {
+  top: 24px;
+  right: 24px;
+  background-image: url(../../assets/closebuttonwhite.svg);
 }
 
-.modal__footer{
-    padding: 20px 0 32px 32px;
-    
+.modal__footer {
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.modal__caption{
-    margin: 0 0 12px 0;
-    font-family: "CabinetGrotesk", sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
-    color: black;
+.modal__caption {
+  margin: 0;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: black;
 }
 
-.modal__weather{
-    margin: 0;
-    font-family: "CabinetGrotesk", sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
-    color: black;
+.modal__weather {
+  margin: 12px 0px 0px;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: black;
+}
+
+.modal__delete-button {
+  font-family: "CabinetGrotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ff4d00;
+  border: none;
+  background: transparent;
+  padding: 0px;
+  margin: 0px;
+}
+
+.modal__container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 32px 32px;
 }

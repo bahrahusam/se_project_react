@@ -14,6 +14,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 
 import Profile from "../Profile/Profile";
 import { defaultClothingItems } from "../../utils/constants";
+import { getItems, deleteItem, postItem } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -24,7 +25,7 @@ function App() {
     isDay: false,
   });
 
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]); //defaultclothingitems was here
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -47,8 +48,23 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, image, weather }) => {
-    setClothingItems([{ name, link: image, weather }, ...clothingItems]);
-    handleCloseClick();
+    postItem({ name, imageUrl: image, weather }) // Call API to add item
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]); // Update state with new item
+        handleCloseClick(); // Close modal after successful addition
+      })
+      .catch((err) => console.error("Error adding item:", err));
+  };
+
+  const handleDeleteItem = (card) => {
+    deleteItem(card._id) // Call the API to delete the item
+      .then(() => {
+        setClothingItems((prevItems) =>
+          prevItems.filter((item) => item._id !== card._id)
+        ); // Remove item from state
+        setActiveModal(""); // Close the modal
+      })
+      .catch((err) => console.error("Error deleting item:", err));
   };
 
   useEffect(() => {
@@ -56,6 +72,15 @@ function App() {
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
+        //set clothingitems
       })
       .catch(console.error);
   }, []);
@@ -71,6 +96,7 @@ function App() {
             <Route
               path="/"
               element={
+                //pass clothingitems as prop here
                 <Main
                   weatherData={weatherData}
                   onCardClick={handleCardClick}
@@ -94,6 +120,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           handleCloseClick={handleCloseClick}
+          handleDeleteItem={handleDeleteItem}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
