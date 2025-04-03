@@ -13,7 +13,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import AddItemModal from "../AddItemModal/AddItemModal";
 
 import Profile from "../Profile/Profile";
-import { defaultClothingItems } from "../../utils/constants";
+
 import { getItems, deleteItem, postItem } from "../../utils/api";
 
 function App() {
@@ -106,7 +106,13 @@ function App() {
             />
             <Route
               path="/profile"
-              element={<Profile onCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  onCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
+                />
+              }
               onCardClick={handleCardClick}
             />
           </Routes>
