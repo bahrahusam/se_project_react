@@ -89,6 +89,36 @@
       "imageUrl": "https://plus.unsplash.com/premium_photo-1733701621462-a74d3d408319?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "weather": "cold",
       "_id": 18
+    },
+    {
+      "name": "T-Shirt",
+      "imageUrl": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "weather": "hot",
+      "_id": 19
+    },
+    {
+      "name": "T-Shirt",
+      "imageUrl": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "weather": "hot",
+      "_id": 20
+    },
+    {
+      "name": "T-Shirt",
+      "imageUrl": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "weather": "hot",
+      "_id": 21
+    },
+    {
+      "name": "T-Shirt",
+      "imageUrl": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "weather": "warm",
+      "_id": 26
+    },
+    {
+      "name": "white sweater",
+      "imageUrl": "https://images.unsplash.com/photo-1635802325411-9333b9ee70e1?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "weather": "cold",
+      "_id": 27
     }
   ]
 }

@@ -2,7 +2,11 @@ import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./AddItemModal.css";
 
-export default function AddItemModal({ activeModal, handleCloseClick, onAddItemModalSubmit, }) {
+export default function AddItemModal({
+  activeModal,
+  handleCloseClick,
+  onAddItemModalSubmit,
+}) {
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -20,10 +24,12 @@ export default function AddItemModal({ activeModal, handleCloseClick, onAddItemM
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItemModalSubmit({name, image, weather});
+
+    onAddItemModalSubmit({ name, image, weather });
     setImage("");
     setName("");
     setWeather("");
+    handleCloseClick();
   };
 
   console.log(image);
@@ -31,9 +37,9 @@ export default function AddItemModal({ activeModal, handleCloseClick, onAddItemM
     <ModalWithForm
       title="New garment"
       buttonText="Add garment"
-      activeModal={activeModal}
+      isOpen={activeModal === "add-garment"}
       handleCloseClick={handleCloseClick}
-      onSubmit = {handleSubmit}
+      onSubmit={handleSubmit}
     >
       <label htmlFor="name" className="modal__label">
         Name {""}

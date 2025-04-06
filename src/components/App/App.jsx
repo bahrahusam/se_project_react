@@ -51,6 +51,7 @@ function App() {
     postItem({ name, imageUrl: image, weather }) // Call API to add item
       .then((newItem) => {
         setClothingItems((prevItems) => [newItem, ...prevItems]); // Update state with new item
+
         handleCloseClick(); // Close modal after successful addition
       })
       .catch((err) => console.error("Error adding item:", err));
@@ -62,7 +63,7 @@ function App() {
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== card._id)
         ); // Remove item from state
-        setActiveModal(""); // Close the modal
+        handleCloseClick(); // Close the modal
       })
       .catch((err) => console.error("Error deleting item:", err));
   };
