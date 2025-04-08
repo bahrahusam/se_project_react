@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./AddItemModal.css";
 
@@ -22,15 +22,29 @@ export default function AddItemModal({
     setWeather(e.target.value);
   };
 
+  // define `isOpen`
+  const isOpen = activeModal === "add-garment";
+
+  useEffect(() => {
+    setName("");
+    setImage("");
+    setWeather("");
+  }, [isOpen]); // watch isOpen
+
+  // the submit handler doesn't clear the inputs or close the modal
   const handleSubmit = (e) => {
     e.preventDefault();
-
     onAddItemModalSubmit({ name, image, weather });
-    setImage("");
-    setName("");
-    setWeather("");
-    handleCloseClick();
   };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   onAddItemModalSubmit({ name, image, weather });
+  //   setImage("");
+  //   setName("");
+  //   setWeather("");
+  // };
 
   console.log(image);
   return (
