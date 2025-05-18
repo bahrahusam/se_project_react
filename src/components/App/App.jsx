@@ -43,6 +43,11 @@ function App() {
     setActiveModal("add-garment");
   };
 
+  //new handler for login
+  const handleLoginClick = () => {
+    setActiveModal("login");
+  }
+
   const handleCloseClick = () => {
     setActiveModal("");
   };

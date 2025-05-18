@@ -26,6 +26,13 @@ function Header({ handleAddClick, weatherData }) {
       >
         + Add clothes
       </button>
+      <button
+        onClick={handleAddClick}
+        type="button"
+        className="header__add-clothes-btn"
+      >
+       Login
+      </button>
 
       <Link to="/profile" className="header__link">
         <div className="header__user-container">
