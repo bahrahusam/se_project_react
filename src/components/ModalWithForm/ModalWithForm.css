@@ -11,6 +11,12 @@
   visibility: hidden;
 }
 
+.modal__buttons {
+  display: flex;
+  gap: 10px;
+
+}
+
 .modal__opened {
   visibility: visible;
 }

@@ -15,6 +15,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 
 import { getItems, deleteItem, postItem } from "../../utils/api";
+import LoginModal from "../LoginModal/LoginModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -97,7 +98,7 @@ function App() {
     >
       <div className="page">
         <div className="page__content">
-          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+          <Header handleAddClick={handleAddClick} handleLoginClick={handleLoginClick} weatherData={weatherData} />
           <Routes>
             <Route
               path="/"
@@ -134,6 +135,12 @@ function App() {
           handleCloseClick={handleCloseClick}
           handleDeleteItem={handleDeleteItem}
         />
+        <LoginModal
+          activeModal={activeModal}
+          handleCloseClick={handleCloseClick}
+          
+        />
+
       </div>
     </CurrentTemperatureUnitContext.Provider>
   );

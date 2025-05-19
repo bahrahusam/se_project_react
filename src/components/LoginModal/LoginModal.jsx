@@ -23,7 +23,7 @@ export default function LoginModal({
   };
 
   // define `isOpen`
-  const isOpen = activeModal === "add-garment";
+  const isOpen = activeModal === "login";
 
   useEffect(() => {
     setName("");
@@ -39,13 +39,25 @@ export default function LoginModal({
 
 
   console.log(image);
+
+  const addClothesButton = (
+      <button
+        
+        type="button"
+        className="header__add-clothes-btn"
+      >
+        or 
+      </button>
+  );
+
   return (
     <ModalWithForm
-      title="Login"
-      buttonText="Login"
-      isOpen={activeModal === "add-garment"}
+      title="Log in"
+      buttonText="Log in"
+      isOpen={activeModal === "login"}
       handleCloseClick={handleCloseClick}
       onSubmit={handleSubmit}
+      loginButton={addClothesButton}
     >
       <label htmlFor="email" className="modal__label">
         Email {""}
@@ -69,6 +81,8 @@ export default function LoginModal({
           value={image}
         />
       </label>
+
+        
       
     </ModalWithForm>
   );

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-function Header({ handleAddClick, weatherData }) {
+function Header({ handleAddClick, weatherData, handleLoginClick }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -27,12 +27,13 @@ function Header({ handleAddClick, weatherData }) {
         + Add clothes
       </button>
       <button
-        onClick={handleAddClick}
+        onClick={handleLoginClick}
         type="button"
         className="header__add-clothes-btn"
       >
-       Login
+       Log in
       </button>
+      
 
       <Link to="/profile" className="header__link">
         <div className="header__user-container">
