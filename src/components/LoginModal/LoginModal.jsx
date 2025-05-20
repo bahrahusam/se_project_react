@@ -44,9 +44,9 @@ export default function LoginModal({
       <button
         
         type="button"
-        className="header__add-clothes-btn"
+        className="login__button"
       >
-        or 
+        or Sign Up
       </button>
   );
 
