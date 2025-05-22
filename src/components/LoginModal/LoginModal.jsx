@@ -7,37 +7,33 @@ export default function LoginModal({
   handleCloseClick,
   onAddItemModalSubmit,
 }) {
-  const [name, setName] = useState("");
-  const handleNameChange = (e) => {
-    setName(e.target.value);
+  const [email, setEmail] = useState("");
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
-  const [image, setImage] = useState("");
-  const handleImageChange = (e) => {
-    setImage(e.target.value);
+  const [password, setPassword] = useState("");
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
-  const [weather, setWeather] = useState("");
-  const handleWeatherChange = (e) => {
-    setWeather(e.target.value);
-  };
 
   // define `isOpen`
   const isOpen = activeModal === "login";
 
   useEffect(() => {
-    setName("");
-    setImage("");
-    setWeather("");
+    setPassword("");
+    setEmail("");
+    
   }, [isOpen]); // watch isOpen
 
   // the submit handler doesn't clear the inputs or close the modal
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItemModalSubmit({ name, image, weather });
+    onAddItemModalSubmit({ email, password });
   };
 
-  console.log(image);
+  
 
   const orSignUpButton = (
     <button type="button" className="orsignup__button">
@@ -66,8 +62,8 @@ export default function LoginModal({
           className="modal__input"
           id="email"
           placeholder="Email"
-          onChange={handleNameChange}
-          value={name}
+          onChange={handleEmailChange}
+          value={email}
         />
       </label>
       <label htmlFor="Password" className="modal__label">
@@ -77,8 +73,8 @@ export default function LoginModal({
           className="modal__input"
           id="password"
           placeholder="Password"
-          onChange={handleImageChange}
-          value={image}
+          onChange={handlePasswordChange}
+          value={password}
         />
       </label>
     </ModalWithForm>

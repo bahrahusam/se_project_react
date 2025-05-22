@@ -12,23 +12,31 @@ export default function LoginModal({
     setName(e.target.value);
   };
 
-  const [image, setImage] = useState("");
-  const handleImageChange = (e) => {
-    setImage(e.target.value);
+  const [email, setEmail] = useState("");
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
-  const [weather, setWeather] = useState("");
-  const handleWeatherChange = (e) => {
-    setWeather(e.target.value);
+  const [password, setPassword] = useState("");
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
+
+  const [avatarUrl, setAvatarUrl] = useState("");
+  const handleAvatarUrlChange = (e) => {
+    setAvatarUrl(e.target.value);
+  };
+  
+
 
   // define `isOpen`
   const isOpen = activeModal === "signUp";
 
   useEffect(() => {
     setName("");
-    setImage("");
-    setWeather("");
+    setPassword("");
+    setEmail("");
+    setAvatarUrl("");
   }, [isOpen]); // watch isOpen
 
   // the submit handler doesn't clear the inputs or close the modal
@@ -66,8 +74,8 @@ export default function LoginModal({
           className="modal__input"
           id="signupemail"
           placeholder="Email"
-          onChange={handleNameChange}
-          value={name}
+          onChange={handleEmailChange}
+          value={email}
         />
       </label>
       <label htmlFor="Password" className="modal__label">
@@ -77,8 +85,8 @@ export default function LoginModal({
           className="modal__input"
           id="signuppassword"
           placeholder="Password"
-          onChange={handleImageChange}
-          value={image}
+          onChange={handlePasswordChange}
+          value={password}
         />
       </label>
       <label htmlFor="Name" className="modal__label">
@@ -88,8 +96,8 @@ export default function LoginModal({
           className="modal__input"
           id="signupname"
           placeholder="Name"
-          onChange={handleImageChange}
-          value={image}
+          onChange={handleNameChange}
+          value={name}
         />
       </label>
       <label htmlFor="Avatar URL" className="modal__label">
@@ -99,8 +107,8 @@ export default function LoginModal({
           className="modal__input"
           id="url"
           placeholder="Avatar URL"
-          onChange={handleImageChange}
-          value={image}
+          onChange={handleAvatarUrlChange}
+          value={avatarUrl}
         />
       </label>
     </ModalWithForm>
