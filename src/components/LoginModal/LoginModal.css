@@ -1,3 +1,24 @@
-.login__button{
-    
+.orsignup__button {
+  font-family: "CabinetGrotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: transparent;
+  border: none;
+  color: #00000080;
+  cursor: pointer;
+  padding: 0px;
+}
+
+.modal__login-button {
+  width: 74px;
+  height: 36px;
+  border-radius: 4px;
+  background-color: #0000004d;
+  color: #fff;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;
 }

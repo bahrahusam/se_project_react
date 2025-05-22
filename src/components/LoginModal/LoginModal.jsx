@@ -37,27 +37,27 @@ export default function LoginModal({
     onAddItemModalSubmit({ name, image, weather });
   };
 
-
   console.log(image);
 
-  const addClothesButton = (
-      <button
-        
-        type="button"
-        className="login__button"
-      >
-        or Sign Up
-      </button>
+  const orSignUpButton = (
+    <button type="button" className="orsignup__button">
+      or Sign Up
+    </button>
   );
 
   return (
     <ModalWithForm
       title="Log in"
-      buttonText="Log in"
+      // buttonText="Log in"
       isOpen={activeModal === "login"}
       handleCloseClick={handleCloseClick}
       onSubmit={handleSubmit}
-      loginButton={addClothesButton}
+      orSignUpButton={orSignUpButton}
+      loginButton={
+        <button type="submit" className="modal__login-button">
+          Log In
+        </button>
+      }
     >
       <label htmlFor="email" className="modal__label">
         Email {""}
@@ -81,9 +81,6 @@ export default function LoginModal({
           value={image}
         />
       </label>
-
-        
-      
     </ModalWithForm>
   );
 }
