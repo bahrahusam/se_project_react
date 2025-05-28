@@ -17,7 +17,10 @@ import Profile from "../Profile/Profile";
 import { getItems, deleteItem, postItem } from "../../utils/api";
 import LoginModal from "../LoginModal/LoginModal";
 
+import { register, authorize, checkToken } from "../../utils/auth";
+
 import RegisterModal from "../RegisterModal/RegisterModal";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -32,6 +35,9 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const [token, setToken] = useState(localStorage.getItem("jwt") || null);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -60,7 +66,7 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, image, weather }) => {
-    postItem({ name, imageUrl: image, weather }) // Call API to add item
+    postItem({ name, imageUrl: image, weather }, token) // Call API to add item
       .then((newItem) => {
         setClothingItems((prevItems) => [newItem, ...prevItems]); // Update state with new item
 
@@ -70,7 +76,7 @@ function App() {
   };
 
   const handleDeleteItem = (card) => {
-    deleteItem(card._id) // Call the API to delete the item
+    deleteItem(card._id, token) // Call the API to delete the item
       .then(() => {
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== card._id)
@@ -79,6 +85,63 @@ function App() {
       })
       .catch((err) => console.error("Error deleting item:", err));
   };
+
+  const handleRegister = ({ name, avatarUrl, email, password }) => {
+    register({ name, avatar: avatarUrl, email, password })
+      .then(() => {
+        return authorize({ email, password });
+      })
+      .then((userData) => {
+        if (userData.token) {
+          localStorage.setItem("jwt", userData.token);
+          setToken(userData.token);
+          setIsLoggedIn(true);
+          handleCloseClick();
+          console.log("User registered and logged in:", userData);
+        } else {
+          return Promise.reject("No token in registration login response");
+        }
+      })
+      .catch((err) => {
+        console.error("Registration or login error:", err);
+      });
+  };
+
+  const handleLogin = ({ email, password }) => {
+    authorize({ email, password })
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("jwt", res.token); // Save token
+          setToken(res.token);
+          setIsLoggedIn(true); // Update login state
+          handleCloseClick(); // Close login modal
+          console.log("Login successful:", res);
+        } else {
+          return Promise.reject("No token in response");
+        }
+      })
+      .catch((err) => {
+        console.error("Login error:", err);
+      });
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      checkToken(token)
+        .then((userData) => {
+          console.log("Token is valid. User data:", userData);
+          setIsLoggedIn(true); // Keep user logged in
+          setToken(token);
+        })
+        .catch((err) => {
+          console.error("Token check failed:", err);
+          setIsLoggedIn(false);
+          setToken(null);
+          localStorage.removeItem("jwt"); // Clean up invalid token
+        });
+    }
+  }, []);
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -93,9 +156,8 @@ function App() {
     getItems()
       .then((data) => {
         setClothingItems(data);
-        //set clothingitems
       })
-      .catch(console.error);
+      .catch((err) => console.error("Failed to fetch items:", err));
   }, []);
 
   return (
@@ -125,11 +187,13 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
-                  clothingItems={clothingItems}
-                  onCardClick={handleCardClick}
-                  handleAddClick={handleAddClick}
-                />
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    clothingItems={clothingItems}
+                    onCardClick={handleCardClick}
+                    handleAddClick={handleAddClick}
+                  />
+                </ProtectedRoute>
               }
               onCardClick={handleCardClick}
             />
@@ -149,10 +213,12 @@ function App() {
         <LoginModal
           activeModal={activeModal}
           handleCloseClick={handleCloseClick}
+          onLogin={handleLogin}
         />
         <RegisterModal
           activeModal={activeModal}
           handleCloseClick={handleCloseClick}
+          onRegister={handleRegister}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

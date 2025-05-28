@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 
-export default function LoginModal({
+export default function RegisterModal({
   activeModal,
   handleCloseClick,
-  onAddItemModalSubmit,
+  onRegister,
 }) {
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
@@ -26,8 +26,6 @@ export default function LoginModal({
   const handleAvatarUrlChange = (e) => {
     setAvatarUrl(e.target.value);
   };
-  
-
 
   // define `isOpen`
   const isOpen = activeModal === "signUp";
@@ -42,10 +40,8 @@ export default function LoginModal({
   // the submit handler doesn't clear the inputs or close the modal
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItemModalSubmit({ name, image, weather });
+    onRegister({ name, avatarUrl, email, password });
   };
-
-  console.log(image);
 
   const orLoginButton = (
     <button type="button" className="orlogin__button">
@@ -61,7 +57,7 @@ export default function LoginModal({
       handleCloseClick={handleCloseClick}
       onSubmit={handleSubmit}
       orLoginButton={orLoginButton}
-      signUpButton={
+      customSubmitButton={
         <button type="submit" className="modal__signup-button">
           Sign Up
         </button>

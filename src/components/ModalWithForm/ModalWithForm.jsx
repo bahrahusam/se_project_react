@@ -8,9 +8,8 @@ function ModalWithForm({
   handleCloseClick,
   onSubmit,
   orSignUpButton,
-  loginButton,
+  customSubmitButton,
   orLoginButton,
-  signUpButton,
 }) {
   return (
     <div className={`modal ${isOpen ? "modal__opened" : ""}`}>
@@ -25,10 +24,8 @@ function ModalWithForm({
           {children}
 
           <div className="modal__buttons">
-            {signUpButton ? (
-              signUpButton
-            ) : loginButton ? (
-              loginButton
+            {customSubmitButton ? (
+              customSubmitButton
             ) : (
               <button type="submit" className="modal__submit">
                 {buttonText}

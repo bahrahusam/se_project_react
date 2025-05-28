@@ -2,11 +2,7 @@ import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
-export default function LoginModal({
-  activeModal,
-  handleCloseClick,
-  onAddItemModalSubmit,
-}) {
+export default function LoginModal({ activeModal, handleCloseClick, onLogin }) {
   const [email, setEmail] = useState("");
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -17,23 +13,19 @@ export default function LoginModal({
     setPassword(e.target.value);
   };
 
-
   // define `isOpen`
   const isOpen = activeModal === "login";
 
   useEffect(() => {
     setPassword("");
     setEmail("");
-    
   }, [isOpen]); // watch isOpen
 
   // the submit handler doesn't clear the inputs or close the modal
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItemModalSubmit({ email, password });
+    onLogin({ email, password });
   };
-
-  
 
   const orSignUpButton = (
     <button type="button" className="orsignup__button">
@@ -49,7 +41,7 @@ export default function LoginModal({
       handleCloseClick={handleCloseClick}
       onSubmit={handleSubmit}
       orSignUpButton={orSignUpButton}
-      loginButton={
+      customSubmitButton={
         <button type="submit" className="modal__login-button">
           Log In
         </button>

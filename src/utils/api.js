@@ -15,20 +15,22 @@ function getItems() {
   return request(`${baseUrl}/items`);
 }
 
-function deleteItem(itemId) {
+function deleteItem(itemId, token) {
   return request(`${baseUrl}/items/${itemId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   });
 }
 
-function postItem({ name, imageUrl, weather }) {
+function postItem({ name, imageUrl, weather }, token) {
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
