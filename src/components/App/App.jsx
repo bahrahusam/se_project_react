@@ -21,6 +21,8 @@ import { register, authorize, checkToken } from "../../utils/auth";
 
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -36,6 +38,8 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const [currentUser, setCurrentUser] = useState(null);
 
   const [token, setToken] = useState(localStorage.getItem("jwt") || null);
 
@@ -133,6 +137,7 @@ function App() {
           console.log("Token is valid. User data:", userData);
           setIsLoggedIn(true); // Keep user logged in
           setToken(token);
+          setCurrentUser(userData);
         })
         .catch((err) => {
           console.error("Token check failed:", err);
@@ -161,6 +166,8 @@ function App() {
   }, []);
 
   return (
+
+    <CurrentUserContext.Provider value={currentUser}>
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
@@ -222,6 +229,7 @@ function App() {
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
+    </CurrentUserContext.Provider>
   );
 }
 export default App;
