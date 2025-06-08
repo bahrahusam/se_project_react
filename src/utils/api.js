@@ -40,4 +40,33 @@ function postItem({ name, imageUrl, weather }, token) {
   });
 }
 
-export { getItems, deleteItem, postItem };
+function updateUserProfile({ name, avatar }, token) {
+  return request(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  });
+}
+
+export const addCardLike = (cardId, token) => {
+  return request(`${baseUrl}/items/${cardId}/likes`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const removeCardLike = (cardId, token) => {
+  return request(`${baseUrl}/items/${cardId}/likes`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export { getItems, deleteItem, postItem, updateUserProfile };

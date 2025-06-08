@@ -24,3 +24,21 @@
   border: 1px solid rgb(0, 0, 0, 0.3);
   border-radius: 20px;
 }
+
+.card__like-button {
+  background-image: url(../../assets/heart-outline.svg);
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  background-repeat: none;
+  background-size: contain;
+}
+
+.card__like-button_active {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  background-repeat: none;
+  background-size: contain;
+  background-image: url(../../assets/heart-filled.svg);
+}

@@ -1,7 +1,7 @@
 import avatar from "../../assets/avatar.png";
 import "./SideBar.css";
 
-function Sidebar() {
+function Sidebar({ handleEditClick, handleLogout }) {
   return (
     <div className="sidebar">
       <div className="sidebar__profile-info">
@@ -9,22 +9,21 @@ function Sidebar() {
         <p className="sidebar__username">Terrence Tegegne</p>
       </div>
 
-          <button
-            // onClick={handleSignUpClick}
-            type="button"
-            className="sidebar__profile-btn"
-          >
-            Change Profile Data
-          </button>
+      <button
+        type="button"
+        className="sidebar__profile-btn"
+        onClick={handleEditClick}
+      >
+        Change Profile Data
+      </button>
 
-          <button
-            // onClick={handleSignUpClick}
-            type="button"
-            className="sidebar__logout-btn"
-          >
-            Logout
-          </button>
-      
+      <button
+        type="button"
+        className="sidebar__logout-btn"
+        onClick={handleLogout}
+      >
+        Logout
+      </button>
     </div>
   );
 }
