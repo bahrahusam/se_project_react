@@ -6,6 +6,7 @@ export default function RegisterModal({
   activeModal,
   handleCloseClick,
   onRegister,
+  handleLoginClick,
 }) {
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
@@ -44,7 +45,11 @@ export default function RegisterModal({
   };
 
   const orLoginButton = (
-    <button type="button" className="orlogin__button">
+    <button
+      type="button"
+      className="orlogin__button"
+      onClick={handleLoginClick}
+    >
       or Log In
     </button>
   );

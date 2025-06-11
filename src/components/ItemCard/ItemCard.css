@@ -48,5 +48,5 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  z-index: 2;
+  z-index: 0;
 }

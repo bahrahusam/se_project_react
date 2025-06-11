@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
-export default function LoginModal({ activeModal, handleCloseClick, onLogin }) {
+export default function LoginModal({
+  activeModal,
+  handleCloseClick,
+  onLogin,
+  handleSignUpClick,
+}) {
   const [email, setEmail] = useState("");
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -28,7 +33,11 @@ export default function LoginModal({ activeModal, handleCloseClick, onLogin }) {
   };
 
   const orSignUpButton = (
-    <button type="button" className="orsignup__button">
+    <button
+      type="button"
+      className="orsignup__button"
+      onClick={handleSignUpClick}
+    >
       or Sign Up
     </button>
   );

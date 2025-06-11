@@ -270,11 +270,13 @@ function App() {
             activeModal={activeModal}
             handleCloseClick={handleCloseClick}
             onLogin={handleLogin}
+            handleSignUpClick={handleSignUpClick}
           />
           <RegisterModal
             activeModal={activeModal}
             handleCloseClick={handleCloseClick}
             onRegister={handleRegister}
+            handleLoginClick={handleLoginClick}
           />
         </div>
 
