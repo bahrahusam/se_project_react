@@ -191,7 +191,7 @@ function App() {
           localStorage.removeItem("jwt"); // Clean up invalid token
         });
     }
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -222,6 +222,7 @@ function App() {
               handleLoginClick={handleLoginClick}
               handleSignUpClick={handleSignUpClick}
               weatherData={weatherData}
+              isLoggedIn={isLoggedIn}
             />
             <Routes>
               <Route
